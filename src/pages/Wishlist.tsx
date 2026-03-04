@@ -2,6 +2,7 @@ import { Trash2, ShoppingCart, Heart, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { motion } from "motion/react";
+import { formatPriceGNF } from "../utils/currency";
 
 export default function Wishlist() {
   const { wishlist, removeFromWishlist, addToCart } = useCart();
@@ -77,7 +78,7 @@ export default function Wishlist() {
                 {item.name}
               </Link>
               <div className="mb-6 text-xl font-black text-slate-900 dark:text-white">
-                ${item.price.toFixed(2)}
+                {formatPriceGNF(item.price)}
               </div>
               <button
                 onClick={() => handleMoveToCart(item)}

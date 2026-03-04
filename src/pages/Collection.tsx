@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Filter, ChevronRight, ShoppingCart, Heart, Star, Check, X } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { formatPriceGNF } from "../utils/currency";
 
 const products = [
   {
@@ -88,10 +89,10 @@ export default function Collection() {
   const categories = Array.from(new Set(products.map(p => p.category)));
 
   const priceRanges = [
-    { label: "Moins de 50 $", min: 0, max: 50 },
-    { label: "50 $ - 100 $", min: 50, max: 100 },
-    { label: "100 $ - 200 $", min: 100, max: 200 },
-    { label: "200 $ et plus", min: 200, max: Infinity },
+    { label: "Moins de 50 GNF", min: 0, max: 50 },
+    { label: "50 - 100 GNF", min: 50, max: 100 },
+    { label: "100 - 200 GNF", min: 100, max: 200 },
+    { label: "200 GNF et plus", min: 200, max: Infinity },
   ];
 
   const handleAddToCart = (product: any) => {
@@ -318,8 +319,8 @@ export default function Collection() {
                   </div>
                   <div className="mt-auto flex items-center justify-between">
                     <div className="flex flex-col">
-                      <span className="text-xl font-black text-primary">${product.price.toFixed(2)}</span>
-                      {product.oldPrice && <span className="text-xs text-slate-400 line-through">${product.oldPrice.toFixed(2)}</span>}
+                      <span className="text-xl font-black text-primary">{formatPriceGNF(product.price)}</span>
+                      {product.oldPrice && <span className="text-xs text-slate-400 line-through">{formatPriceGNF(product.oldPrice)}</span>}
                     </div>
                     <button 
                       onClick={() => handleAddToCart(product)}

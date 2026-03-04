@@ -2,6 +2,7 @@ import { ArrowRight, ShoppingCart, Check, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import React, { useState } from "react";
+import { formatPriceGNF } from "../utils/currency";
 
 const products = [
   {
@@ -147,7 +148,7 @@ export default function Home() {
               </div>
               <h4 className="font-bold text-lg">{product.name}</h4>
               <p className="text-slate-500 dark:text-slate-400 text-sm mb-1">{product.category}</p>
-              <p className="text-primary font-bold">${product.price.toFixed(2)}</p>
+              <p className="text-primary font-bold">{formatPriceGNF(product.price)}</p>
             </Link>
           ))}
         </div>

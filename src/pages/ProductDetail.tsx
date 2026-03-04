@@ -2,6 +2,7 @@ import React, { useState, MouseEvent } from "react";
 import { Star, StarHalf, ShoppingCart, Heart, Truck, ShieldCheck, ChevronRight } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { formatPriceGNF } from "../utils/currency";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -130,9 +131,9 @@ export default function ProductDetail() {
             </div>
           </div>
 
-          <div className="flex items-baseline gap-3">
-            <span className="text-3xl font-bold text-slate-900 dark:text-slate-100">${product.price.toFixed(2)}</span>
-            <span className="text-xl text-slate-400 line-through">$199.00</span>
+            <div className="flex items-baseline gap-3">
+            <span className="text-3xl font-bold text-slate-900 dark:text-slate-100">{formatPriceGNF(product.price)}</span>
+            <span className="text-xl text-slate-400 line-through">{formatPriceGNF(199)}</span>
           </div>
 
           <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -202,8 +203,8 @@ export default function ProductDetail() {
             <div className="flex gap-3 text-sm">
               <Truck className="text-primary" size={20} />
               <div>
-                <p className="font-bold">Free Shipping</p>
-                <p className="text-slate-500">Orders over $100. Delivered in 3-5 days.</p>
+                <p className="font-bold">Livraison offerte</p>
+                <p className="text-slate-500">Pour les commandes supérieures à 100&nbsp;GNF. Livré en 3 à 5 jours.</p>
               </div>
             </div>
             <div className="flex gap-3 text-sm">

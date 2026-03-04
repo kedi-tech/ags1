@@ -1,6 +1,7 @@
 import { ChevronRight, Trash2, Heart, Minus, Plus, ShieldCheck, Truck, ArrowLeft, ArrowRight, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { formatPriceGNF } from "../utils/currency";
 
 export default function Cart() {
   const { cart, removeFromCart, updateQuantity, cartTotal, addToWishlist } = useCart();
@@ -109,7 +110,7 @@ export default function Cart() {
                     </button>
                   </div>
                   <div className="text-right">
-                    <p className="text-slate-900 dark:text-slate-100 text-xl font-bold">${(item.price * item.quantity).toFixed(2)}</p>
+                    <p className="text-slate-900 dark:text-slate-100 text-xl font-bold">{formatPriceGNF(item.price * item.quantity)}</p>
                   </div>
                 </div>
               </div>
@@ -130,7 +131,7 @@ export default function Cart() {
             <div className="flex flex-col gap-4 mb-6">
               <div className="flex justify-between items-center text-slate-600 dark:text-slate-400">
                 <span>Sous-total ({cart.length} article(s))</span>
-                <span className="font-medium text-slate-900 dark:text-slate-100">${cartTotal.toFixed(2)}</span>
+                <span className="font-medium text-slate-900 dark:text-slate-100">{formatPriceGNF(cartTotal)}</span>
               </div>
               <div className="flex justify-between items-center text-slate-600 dark:text-slate-400">
                 <span>Livraison estimée</span>
@@ -138,13 +139,13 @@ export default function Cart() {
               </div>
               <div className="flex justify-between items-center text-slate-600 dark:text-slate-400">
                 <span>Taxes estimées</span>
-                <span className="font-medium text-slate-900 dark:text-slate-100">${tax.toFixed(2)}</span>
+                <span className="font-medium text-slate-900 dark:text-slate-100">{formatPriceGNF(tax)}</span>
               </div>
             </div>
             <div className="border-t border-slate-100 dark:border-slate-800 pt-6 mb-8">
               <div className="flex justify-between items-center">
                 <span className="text-slate-900 dark:text-slate-100 text-lg font-bold">Total</span>
-                <span className="text-primary text-2xl font-black">${total.toFixed(2)}</span>
+                <span className="text-primary text-2xl font-black">{formatPriceGNF(total)}</span>
               </div>
             </div>
             <div className="mb-8">

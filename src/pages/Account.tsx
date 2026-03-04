@@ -1,5 +1,6 @@
 import { Hand, Package, User, MapPin, Heart, LogOut, CreditCard, Truck, Stars, History } from "lucide-react";
 import { Link } from "react-router-dom";
+import { formatPriceGNF } from "../utils/currency";
 
 export default function Account() {
   return (
@@ -61,7 +62,7 @@ export default function Account() {
                 <span className="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Spent</span>
                 <CreditCard className="text-primary" size={20} />
               </div>
-              <p className="text-2xl font-bold">$1,248.50</p>
+              <p className="text-2xl font-bold">{formatPriceGNF(1248.5)}</p>
               <p className="text-xs text-green-500 font-medium mt-1">+12% from last month</p>
             </div>
             <div className="rounded-xl bg-white dark:bg-slate-900 p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
@@ -101,9 +102,9 @@ export default function Account() {
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                   {[
-                    { id: "#ORD-7721", date: "Oct 24, 2023", total: "$124.00", status: "Processing", color: "blue" },
-                    { id: "#ORD-7610", date: "Oct 15, 2023", total: "$56.50", status: "In Transit", color: "amber" },
-                    { id: "#ORD-7505", date: "Sep 30, 2023", total: "$210.00", status: "Delivered", color: "emerald" },
+                    { id: "#ORD-7721", date: "24 oct. 2023", total: formatPriceGNF(124), status: "En cours de traitement", color: "blue" },
+                    { id: "#ORD-7610", date: "15 oct. 2023", total: formatPriceGNF(56.5), status: "En transit", color: "amber" },
+                    { id: "#ORD-7505", date: "30 sept. 2023", total: formatPriceGNF(210), status: "Livrée", color: "emerald" },
                   ].map((order) => (
                     <tr key={order.id}>
                       <td className="px-6 py-5 text-sm font-medium">{order.id}</td>

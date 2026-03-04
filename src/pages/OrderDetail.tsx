@@ -1,5 +1,6 @@
 import { ChevronRight, Download, CheckCircle, Truck, Package, MapPin, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
+import { formatPriceGNF } from "../utils/currency";
 
 export default function OrderDetail() {
   return (
@@ -73,7 +74,7 @@ export default function OrderDetail() {
                     <div className="flex-1">
                       <div className="flex justify-between items-start">
                         <h4 className="font-semibold text-slate-900 dark:text-slate-100">{item.name}</h4>
-                        <span className="font-bold text-slate-900 dark:text-slate-100">${item.price.toFixed(2)}</span>
+                        <span className="font-bold text-slate-900 dark:text-slate-100">{formatPriceGNF(item.price)}</span>
                       </div>
                       <p className="text-sm text-slate-500 mt-1">{item.variant}</p>
                       <p className="text-sm text-slate-500 mt-1">Qty: 1</p>

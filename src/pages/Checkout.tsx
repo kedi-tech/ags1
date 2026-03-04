@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronRight, Lock, CreditCard, Wallet, Verified, Truck, CheckCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { formatPriceGNF } from "../utils/currency";
 
 export default function Checkout() {
   const { cart, cartTotal, clearCart } = useCart();
@@ -170,7 +171,7 @@ export default function Checkout() {
                       <p className="text-sm font-semibold text-slate-900 dark:text-slate-100 leading-tight truncate">{item.name}</p>
                       <p className="text-xs text-slate-500 truncate">{item.variant}</p>
                       <p className="text-sm font-bold text-slate-900 dark:text-slate-100 mt-1">
-                        {item.quantity} x ${item.price.toFixed(2)}
+                        {item.quantity} x {formatPriceGNF(item.price)}
                       </p>
                     </div>
                   </div>
@@ -180,7 +181,7 @@ export default function Checkout() {
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-slate-600 dark:text-slate-400">
                   <span>Sous-total</span>
-                  <span>${cartTotal.toFixed(2)}</span>
+                  <span>{formatPriceGNF(cartTotal)}</span>
                 </div>
                 <div className="flex justify-between text-slate-600 dark:text-slate-400">
                   <span>Livraison</span>
@@ -188,11 +189,11 @@ export default function Checkout() {
                 </div>
                 <div className="flex justify-between text-slate-600 dark:text-slate-400">
                   <span>Taxes</span>
-                  <span>${tax.toFixed(2)}</span>
+                  <span>{formatPriceGNF(tax)}</span>
                 </div>
                 <div className="flex justify-between text-slate-900 dark:text-slate-100 text-lg font-bold pt-2 border-t border-slate-100 dark:border-slate-800 mt-2">
                   <span>Total</span>
-                  <span className="text-primary">${total.toFixed(2)}</span>
+                  <span className="text-primary">{formatPriceGNF(total)}</span>
                 </div>
               </div>
               <button 
