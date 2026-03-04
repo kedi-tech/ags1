@@ -85,26 +85,26 @@ export default function Home() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-xl space-y-6">
             <span className="inline-block px-3 py-1 bg-primary/20 text-primary text-xs font-bold tracking-widest uppercase rounded">
-              New Season 2024
+              Nouvelle collection 2024
             </span>
             <h2 className="text-5xl md:text-7xl font-black text-white leading-[1.1]">
-              Elevate Your Everyday Style
+              Sublimez votre style au quotidien
             </h2>
             <p className="text-lg text-slate-200 font-light max-w-md">
-              Discover our curated selection of high-end essentials designed for the modern connoisseur.
+              Découvrez notre sélection de pièces haut de gamme conçues pour les connaisseurs modernes.
             </p>
             <div className="flex gap-4 pt-4">
               <Link
                 to="/collection"
                 className="bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-lg shadow-lg shadow-primary/30 transition-all"
               >
-                Shop Collection
+                Découvrir la collection
               </Link>
               <Link
                 to="/collection"
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-bold py-4 px-8 rounded-lg border border-white/20 transition-all text-center"
               >
-                View Lookbook
+                Voir le lookbook
               </Link>
             </div>
           </div>
@@ -113,13 +113,13 @@ export default function Home() {
 
       {/* New Arrivals Section */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between mb-12">
+            <div className="flex items-end justify-between mb-12">
           <div className="space-y-2">
-            <h3 className="text-3xl font-bold tracking-tight">New Arrivals</h3>
-            <p className="text-slate-500 dark:text-slate-400">Fresh additions to our signature collection.</p>
+            <h3 className="text-3xl font-bold tracking-tight">Nouveautés</h3>
+            <p className="text-slate-500 dark:text-slate-400">Les dernières pièces ajoutées à notre collection emblématique.</p>
           </div>
           <Link to="/collection" className="text-primary font-bold flex items-center gap-1 group">
-            View All <span className="transition-transform group-hover:translate-x-1">→</span>
+            Tout voir <span className="transition-transform group-hover:translate-x-1">→</span>
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

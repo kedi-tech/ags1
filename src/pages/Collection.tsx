@@ -74,7 +74,7 @@ export default function Collection() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
   const [minRating, setMinRating] = useState<number | null>(null);
-  const [sortBy, setSortBy] = useState("Best Selling");
+  const [sortBy, setSortBy] = useState("Meilleures ventes");
 
   // Sync with URL params on mount
   useEffect(() => {
@@ -88,10 +88,10 @@ export default function Collection() {
   const categories = Array.from(new Set(products.map(p => p.category)));
 
   const priceRanges = [
-    { label: "Under $50", min: 0, max: 50 },
-    { label: "$50 - $100", min: 50, max: 100 },
-    { label: "$100 - $200", min: 100, max: 200 },
-    { label: "$200+", min: 200, max: Infinity },
+    { label: "Moins de 50 $", min: 0, max: 50 },
+    { label: "50 $ - 100 $", min: 50, max: 100 },
+    { label: "100 $ - 200 $", min: 100, max: 200 },
+    { label: "200 $ et plus", min: 200, max: Infinity },
   ];
 
   const handleAddToCart = (product: any) => {
@@ -157,11 +157,11 @@ export default function Collection() {
 
     return true;
   }).sort((a, b) => {
-    if (sortBy === "Price: Low to High") return a.price - b.price;
-    if (sortBy === "Price: High to Low") return b.price - a.price;
-    if (sortBy === "Rating: High to Low") return b.rating - a.rating;
-    if (sortBy === "Rating: Low to High") return a.rating - b.rating;
-    if (sortBy === "Newest Arrivals") return b.id - a.id;
+    if (sortBy === "Prix : du plus bas au plus élevé") return a.price - b.price;
+    if (sortBy === "Prix : du plus élevé au plus bas") return b.price - a.price;
+    if (sortBy === "Note : de la plus haute à la plus basse") return b.rating - a.rating;
+    if (sortBy === "Note : de la plus basse à la plus haute") return a.rating - b.rating;
+    if (sortBy === "Nouveautés") return b.id - a.id;
     return 0; // Default: Best Selling (original order)
   });
 
@@ -169,16 +169,16 @@ export default function Collection() {
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
       {/* Breadcrumbs */}
       <nav className="mb-6 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-        <Link className="hover:text-primary" to="/">Home</Link>
+        <Link className="hover:text-primary" to="/">Accueil</Link>
         <ChevronRight size={14} />
-        <span className="font-medium text-slate-900 dark:text-white">All Products</span>
+        <span className="font-medium text-slate-900 dark:text-white">Tous les produits</span>
       </nav>
 
       {/* Page Header */}
       <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Our Collection</h1>
-          <p className="mt-2 text-slate-600 dark:text-slate-400">Explore our curated selection of high-quality products.</p>
+          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Notre collection</h1>
+          <p className="mt-2 text-slate-600 dark:text-slate-400">Découvrez notre sélection de produits de haute qualité.</p>
         </div>
         <div className="flex items-center gap-4">
           <button 
@@ -186,21 +186,21 @@ export default function Collection() {
             className="lg:hidden flex items-center gap-2 rounded-lg border border-slate-200 dark:border-slate-800 px-4 py-2 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
           >
             <Filter size={16} />
-            Filters
+            Filtres
           </button>
           <label className="flex items-center gap-3">
-            <span className="text-sm font-medium whitespace-nowrap">Sort By:</span>
+            <span className="text-sm font-medium whitespace-nowrap">Trier par :</span>
             <select 
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               className="rounded-lg border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-2 pl-4 pr-10 text-sm focus:border-primary focus:ring-primary outline-none"
             >
-              <option>Best Selling</option>
-              <option>Newest Arrivals</option>
-              <option>Price: Low to High</option>
-              <option>Price: High to Low</option>
-              <option>Rating: High to Low</option>
-              <option>Rating: Low to High</option>
+              <option>Meilleures ventes</option>
+              <option>Nouveautés</option>
+              <option>Prix : du plus bas au plus élevé</option>
+              <option>Prix : du plus élevé au plus bas</option>
+              <option>Note : de la plus haute à la plus basse</option>
+              <option>Note : de la plus basse à la plus haute</option>
             </select>
           </label>
         </div>
@@ -212,8 +212,8 @@ export default function Collection() {
           <div className="fixed inset-0 z-50 lg:hidden">
             <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileFiltersOpen(false)} />
             <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-white dark:bg-slate-900 p-6 shadow-xl overflow-y-auto">
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-xl font-bold">Filters</h2>
+            <div className="flex items-center justify-between mb-8">
+                <h2 className="text-xl font-bold">Filtres</h2>
                 <button onClick={() => setIsMobileFiltersOpen(false)} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
                   <X size={20} />
                 </button>
@@ -265,8 +265,8 @@ export default function Collection() {
               <div className="h-20 w-20 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-4">
                 <Filter size={40} className="text-slate-400" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">No products found</h3>
-              <p className="text-slate-500 dark:text-slate-400 mt-2">Try adjusting your filters to find what you're looking for.</p>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Aucun produit trouvé</h3>
+              <p className="text-slate-500 dark:text-slate-400 mt-2">Essayez d'ajuster vos filtres pour trouver ce que vous recherchez.</p>
               <button 
                 onClick={() => {
                   setSelectedCategories([]);
@@ -275,7 +275,7 @@ export default function Collection() {
                 }}
                 className="mt-6 text-primary font-bold hover:underline"
               >
-                Clear all filters
+                Réinitialiser tous les filtres
               </button>
             </div>
           ) : (
@@ -356,21 +356,21 @@ function FilterSidebar({
         <div className="flex items-center justify-between mb-4">
           <h3 className="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
             <Filter size={20} />
-            Filters
+            Filtres
           </h3>
           {(selectedCategories.length > 0 || selectedPriceRanges.length > 0 || minRating !== null) && (
             <button 
               onClick={clearAll}
               className="text-xs font-bold text-primary hover:underline"
             >
-              Clear All
+              Tout effacer
             </button>
           )}
         </div>
 
         {/* Category Filter */}
         <div className="border-t border-slate-200 dark:border-slate-800 py-6">
-          <h4 className="font-semibold mb-4 text-slate-900 dark:text-white">Categories</h4>
+          <h4 className="font-semibold mb-4 text-slate-900 dark:text-white">Catégories</h4>
           <div className="space-y-3">
             {categories.map((category: string) => (
               <label key={category} className="flex items-center gap-3 cursor-pointer group">
@@ -390,7 +390,7 @@ function FilterSidebar({
 
         {/* Price Filter */}
         <div className="border-t border-slate-200 dark:border-slate-800 py-6">
-          <h4 className="font-semibold mb-4 text-slate-900 dark:text-white">Price Range</h4>
+          <h4 className="font-semibold mb-4 text-slate-900 dark:text-white">Tranche de prix</h4>
           <div className="space-y-3">
             {priceRanges.map((range: any) => (
               <label key={range.label} className="flex items-center gap-3 cursor-pointer group">
@@ -410,7 +410,7 @@ function FilterSidebar({
 
         {/* Rating Filter */}
         <div className="border-t border-slate-200 dark:border-slate-800 py-6">
-          <h4 className="font-semibold mb-4 text-slate-900 dark:text-white">Minimum Rating</h4>
+          <h4 className="font-semibold mb-4 text-slate-900 dark:text-white">Note minimale</h4>
           <div className="space-y-3">
             {[4, 3, 2].map((rating) => (
               <label key={rating} className="flex items-center gap-3 cursor-pointer group">
@@ -428,7 +428,7 @@ function FilterSidebar({
                     ))}
                   </div>
                   <span className={`text-sm transition-colors ${minRating === rating ? 'text-primary font-bold' : 'text-slate-600 dark:text-slate-400 group-hover:text-primary'}`}>
-                    & Up
+                    et plus
                   </span>
                 </div>
               </label>

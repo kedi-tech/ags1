@@ -7,18 +7,18 @@ export default function Categories() {
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumbs */}
       <nav className="mb-8 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-        <Link className="hover:text-primary transition-colors" to="/">Home</Link>
+        <Link className="hover:text-primary transition-colors" to="/">Accueil</Link>
         <ChevronRight size={14} />
-        <span className="font-medium text-slate-900 dark:text-white">Categories</span>
+        <span className="font-medium text-slate-900 dark:text-white">Catégories</span>
       </nav>
 
       {/* Header */}
       <div className="mb-12">
         <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-          Browse by Category
+          Parcourir par catégorie
         </h1>
         <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl">
-          Discover our specialized collections curated for quality, performance, and style.
+          Découvrez nos collections spécialisées, sélectionnées pour leur qualité, leurs performances et leur style.
         </p>
       </div>
 
@@ -56,10 +56,10 @@ export default function Categories() {
               </p>
               <div className="mt-auto flex items-center justify-between">
                 <span className="text-xs font-bold text-primary uppercase tracking-widest">
-                  {category.count} Products
+                  {category.count} produits
                 </span>
                 <div className="flex items-center gap-1 text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
-                  View Collection <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
+                  Voir la collection <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
                 </div>
               </div>
             </div>
@@ -74,12 +74,12 @@ export default function Categories() {
           <div className="size-16 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform">
             <LayoutGrid className="text-primary" size={32} />
           </div>
-          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Explore All</h3>
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Tout explorer</h3>
           <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">
-            View our entire catalog of premium products across all categories.
+            Découvrez l'ensemble de notre catalogue de produits haut de gamme, toutes catégories confondues.
           </p>
           <div className="bg-primary text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-primary/20 group-hover:bg-primary/90 transition-all">
-            Shop Full Collection
+            Voir toute la collection
           </div>
         </Link>
       </div>

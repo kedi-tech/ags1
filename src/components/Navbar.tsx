@@ -30,7 +30,7 @@ export default function Navbar() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
               <input
                 className="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm outline-none"
-                placeholder="Search premium products..."
+                placeholder="Rechercher des produits haut de gamme..."
                 type="text"
               />
             </div>
@@ -38,7 +38,7 @@ export default function Navbar() {
 
           {/* Nav Links - Hidden on mobile */}
           <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
-            <Link to="/collection" className="hover:text-primary transition-colors whitespace-nowrap">All Products</Link>
+            <Link to="/collection" className="hover:text-primary transition-colors whitespace-nowrap">Tous les produits</Link>
             
             {categories.map((category) => (
               <Link 
@@ -91,12 +91,12 @@ export default function Navbar() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                 <input
                   className="w-full pl-10 pr-4 py-3 bg-slate-100 dark:bg-slate-800 border-none rounded-xl text-sm outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="Search products..."
+                  placeholder="Rechercher des produits..."
                   type="text"
                 />
               </div>
               <nav className="flex flex-col gap-4 text-lg font-bold">
-                <Link onClick={() => setIsMenuOpen(false)} to="/collection" className="hover:text-primary transition-colors">All Products</Link>
+                <Link onClick={() => setIsMenuOpen(false)} to="/collection" className="hover:text-primary transition-colors">Tous les produits</Link>
                 
                 {categories.map((category) => (
                   <Link
@@ -109,8 +109,8 @@ export default function Navbar() {
                   </Link>
                 ))}
 
-                <Link onClick={() => setIsMenuOpen(false)} to="/wishlist" className="hover:text-primary transition-colors">Wishlist</Link>
-                <Link onClick={() => setIsMenuOpen(false)} to="/account" className="hover:text-primary transition-colors">My Account</Link>
+                <Link onClick={() => setIsMenuOpen(false)} to="/wishlist" className="hover:text-primary transition-colors">Liste de souhaits</Link>
+                <Link onClick={() => setIsMenuOpen(false)} to="/account" className="hover:text-primary transition-colors">Mon compte</Link>
               </nav>
             </div>
           </motion.div>
